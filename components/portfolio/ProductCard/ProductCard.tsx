@@ -1,106 +1,17 @@
 "use client";
-
-import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Product } from "@/data/products/types";
 import styles from "./ProductCard.module.css";
-
-interface ProductCardProps {
-  product: Product;
-  onViewDetails: (product: Product) => void;
+interface ProductCardProps { product: Product; onViewDetails: (product: Product) => void; }
+export function ProductCard({ product, onViewDetails }: ProductCardProps) {
+  return <article className={styles.card}>
+    <Link href={`/product-details/${product.slug}`} className={`${styles.visual} ${styles[`tone${product.id % 4}`]}`} aria-label={`Explore ${product.title}`}>
+      <span className={styles.category}>{product.category}</span><span className={styles.open}>↗</span>
+      <div className={styles.phone}><Image src={product.screenshots[0]} alt={`${product.title} application preview`} fill sizes="180px" className={styles.screen}/></div>
+      {product.screenshots[1] && <div className={styles.secondPhone}><Image src={product.screenshots[1]} alt={`${product.title} additional screen`} fill sizes="150px" className={styles.screen}/></div>}
+    </Link>
+    <div className={styles.body}><div className={styles.heading}><Image src={product.logo} width={38} height={38} alt="" className={styles.logo}/><div><h3><Link href={`/product-details/${product.slug}`}>{product.title}</Link></h3><span className={styles.platform}>{product.platform.join(" / ")}</span></div></div><p>{product.shortDescription}</p><div className={styles.actions}><Link href={`/product-details/${product.slug}`}>Explore application <span>↗</span></Link><button type="button" onClick={()=>onViewDetails(product)} aria-label={`Quick view of ${product.title}`}>Quick view</button></div></div>
+  </article>;
 }
-
-export const ProductCard: React.FC<ProductCardProps> = ({
-  product,
-  onViewDetails,
-}) => {
-  const platformText =
-    product.platform.length === 2
-      ? "Android & iOS"
-      : product.platform.join(", ");
-
-  return (
-    <div
-      onClick={() => onViewDetails(product)}
-      className={styles.card}
-    >
-      <div>
-        {/* Cover Image Container */}
-        <div className={styles.imageContainer}>
-          <Image
-            src={product.coverImage}
-            alt={`${product.title} Cover Thumbnail`}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className={styles.cardImage}
-            priority={product.id <= 3}
-          />
-          
-        </div>
-
-        {/* Card Body */}
-        <div className={styles.cardBody}>
-          {/* Title */}
-          <h3 className={styles.title}>
-            {product.title}
-          </h3>
-
-          {/* Platform Badge */}
-          <div className={styles.platformBadgeContainer}>
-            <span className={styles.platformBadge}>
-              <svg
-                className={styles.platformIcon}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-                />
-              </svg>
-              {platformText}
-            </span>
-          </div>
-
-          {/* Short Description */}
-          <p className={styles.shortDescription}>
-            {product.shortDescription}
-          </p>
-        </div>
-      </div>
-
-      {/* Card Footer CTA */}
-      <div className={styles.cardFooter}>
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onViewDetails(product);
-          }}
-          type="button"
-          className={styles.ctaButton}
-          aria-label={`View details for ${product.title}`}
-        >
-          <span>View Details</span>
-          <svg
-            className={styles.arrowIcon}
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2.5}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            />
-          </svg>
-        </button>
-      </div>
-    </div>
-  );
-};
-
 export default ProductCard;
