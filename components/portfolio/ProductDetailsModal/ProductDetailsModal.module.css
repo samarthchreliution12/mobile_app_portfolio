@@ -433,3 +433,5 @@
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
+
+.modalContainer{border-radius:22px!important}.categoryTag,.platformTag{background:#edf2e5!important;color:#4a6840!important}.modalTitle{color:#203e33!important}.wizardStepButtonActive{background:#e8efdd!important;color:#34552c!important}.modalHeader{background:#f7f9f2!important}

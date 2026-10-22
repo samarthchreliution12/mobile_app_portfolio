@@ -11,3 +11,5 @@
     scrollbar-width: none;  /* Firefox */
   }
 }
+
+html{scroll-behavior:smooth}body{background:#f8f9f5!important;color:#182c29;font-family:Arial,Helvetica,sans-serif}*{box-sizing:border-box}a{color:inherit}button,input{font:inherit}:focus-visible{outline:3px solid #80a15d;outline-offset:4px}::selection{background:#dcebc5;color:#183c2b}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}

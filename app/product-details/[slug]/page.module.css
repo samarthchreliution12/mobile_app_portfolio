@@ -449,3 +449,6 @@
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
+
+/* Portfolio visual system */
+.pageWrapper{background:#f8f9f5!important;color:#203e33}.heroCard,.sectionCard{border-color:#e0e7d8!important;box-shadow:none!important;border-radius:20px!important}.heroTitle{color:#203e33!important;letter-spacing:-1.5px}.heroRightImageCard{background:#e7eddf!important;min-height:340px}.heroRightImage{object-fit:contain!important;padding:24px!important}.btnPrimary,.centerBtn{background:#244c3b!important;color:white!important;border-radius:99px!important}.platformBadge,.sectionPill{background:#eaf0df!important;color:#4c6940!important;border-color:#dce6cd!important}.sectionTitle,.groupTitle{color:#244434!important}.featureGroupCard{border-color:#e1e7d8!important;box-shadow:none!important}.checkBadge,.groupNumberBadge{background:#e9f0df!important;color:#496b38!important}.backLink,.navLink{color:#375c43!important}

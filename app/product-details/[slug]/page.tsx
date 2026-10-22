@@ -6,8 +6,8 @@ import type { Metadata } from "next";
 import { products } from "@/data/products/products";
 import { ScreenshotGallery } from "@/components/portfolio/ScreenshotGallery/ScreenshotGallery";
 import styles from "./page.module.css";
-import { IoLogoGooglePlaystore } from "react-icons/io5";
-import { FaAppStoreIos } from "react-icons/fa6";
+
+
 
 
 interface PageProps {
@@ -126,7 +126,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     rel="noopener noreferrer"
                     className={styles.appstoreBtn}
                   >
-                    <IoLogoGooglePlaystore />
+                    <span aria-hidden="true">▷</span>
                     <span>Google Play</span>
                   </a>
                 )}
@@ -137,7 +137,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                     rel="noopener noreferrer"
                     className={styles.appstoreBtn}
                   >
-                    <FaAppStoreIos />
+                    <span aria-hidden="true">↗</span>
                     <span>App Store</span>
                   </a>
                 )}
@@ -148,8 +148,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <div className={styles.heroRight}>
               <div className={styles.heroRightImageCard}>
                 <Image
-                  src={product.logo}
-                  alt={`${product.title} Logo Banner`}
+                  src={product.screenshots[0]}
+                  alt={`${product.title} application preview`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 45vw"
                   className={styles.heroRightImage}
